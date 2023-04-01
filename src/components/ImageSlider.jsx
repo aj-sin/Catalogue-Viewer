@@ -18,18 +18,19 @@ const ImageSlider = ({ slides,currentIndex,setCurrentIndex }) => {
  
 
   return (
-    <Stack p={2} sx={{width:"550px",height:"450px"}} >
+    <Stack p={2} sx={{width:{md:"400px", lg:"550px"},height:"450px"}} >
       
-      <Card >
+      <Card sx={{width:{sm:"400px", lg:"550px"},height:{xs:"170px",md:"300px"},margin:"auto"}} >
         <CardMedia
          component="img"
          image={slides[currentIndex].url}
          alt={slides[currentIndex].title}
-         sx={{width:"550px",height:"300px"}}
+         
+         
         />
       </Card>
-      <Stack direction="row" gap={1} justifyContent="center" alignItems="center" sx={{mt:"5px"}}>
-        <ArrowLeftIcon fontSize="large" onClick={goToPrevious}/>
+      <Stack direction="row" gap={1} justifyContent="center" alignItems="center" sx={{mt:"15px"}}>
+        <ArrowLeftIcon fontSize="large" onClick={goToPrevious} sx={{cursor:"pointer"}}/>
         {slides.map((slide, slideIndex) => (
           <Card
             key={slideIndex}
@@ -40,12 +41,12 @@ const ImageSlider = ({ slides,currentIndex,setCurrentIndex }) => {
                  component="img"
                  image={slide.url}
                  alt={slide.title}
-                 sx={{curson:"pointer",width:"100px",height:"100px"}}
+                 sx={{cursor:"pointer",width:{xs:"70px", lg:"100px"},height:{xs:"70px", lg:"100px"},filter:slideIndex===currentIndex?"grayscale(0%)":"grayscale(100%)"}}
                 />
 
           </Card>
         ))}
-        <ArrowRightIcon fontSize="large" onClick={goToNext}/>
+        <ArrowRightIcon fontSize="large" onClick={goToNext} sx={{cursor:"pointer"}}/>
       </Stack>
     </Stack>
   );

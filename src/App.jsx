@@ -1,35 +1,51 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import ImageSlider from "./components/ImageSlider.jsx";
+import maldives from "./assets/maldives.webp";
+import paris from "./assets/paris.jpg";
+import mumbai from "./assets/mumbai.jpg";
+import beijing from "./assets/beijing.jpg";
+import italy from "./assets/italy.jpg";
+import { Box, Stack, Typography } from "@mui/material";
+import { useState } from "react";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
 
+  const slides = [
+    {
+      url: maldives,
+      title: "Maldives",
+      details: "Lorem ",
+    },
+    {
+      url: paris,
+      title: "Paris",
+      details: "Lorem ",
+    },
+    {
+      url: mumbai,
+      title: "Mumbai",
+      details: "Lorem ",
+    },
+    {
+      url: beijing,
+      title: "Beijing",
+      details: "Lorem ",
+    },
+    {
+      url: italy,
+      title: "Italy",
+      details: "Lorem ",
+    },
+  ];
+ 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
-}
+    <Box p={2}>
+      <Typography variant="h3">Catalogue viewer</Typography>
+      <Stack direction="row" sx={{width:"80vw",height:"80vh",margin:"5px auto"}}>
+        <ImageSlider slides={slides} currentIndex={currentIndex} setCurrentIndex={setCurrentIndex}/>
+      </Stack>
+    </Box>
+  );
+};
 
-export default App
+export default App;
